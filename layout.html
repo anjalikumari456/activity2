@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 2</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        .body {
+            display:flex;
+ 
+            flex-wrap:wrap;
+            background-color: whitesmoke;
+            width: 100vw;
+            justify-content: space-between;
+            padding:20px;
+        }
+        .body div{
+            padding:10px;
+            background-color: white;
+            border-radius:10%;
+            width:400px;
+            box-shadow: 0px 10px black 2px;
+        }
+        .body h2{
+            color:green;
+            font-weight: 600;
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+    <div class="navbar gap-1 flex-col justify-center items-center text-white flex bg-green-500 w-[100vw] h-[80px]">
+        <h1 class="text-2xl">Welcome to your Website Task</h1>
+        <div class="flex gap-8 text-xl">
+            <a>Home</a>
+            <a>About</a>
+            <a>Conatct</a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="about">
+            <h2>About CSS</h2>
+            <p>CSS Cascading Style Sheets is a language designed to simplify the process of making web pages presentable.</p>
+        </div>
+        <div class="box_model">
+            <h2>Box Model</h2>
+            <p>The CSS box model is essentially a box that wraps around every HTML element. It consists of: content, padding, borders and margins. The image below illustrates the box model:</p>
+        </div>
+    </div>
+        <div class="body">
+        <div class="responsive">
+            <h2>Responsive Design</h2>
+            <p>A responsive web design will automatically adjust for different screen sizes and viewports.</p>
+        
+        </div>
+    </div>
+    <div class="footer bg-black w-[100vw] h-[50vh]">
+        <div class="justify-center footer_main w-[100vw] h-[40px] text-white flex gap-5">
+            <p>Created by Anjali </p>
+            <p>Follow us on</p>
+            <a class="text-green-500">Instagram</a>
+            <a class="text-green-500">Twitter</a>
+            <a class="text-green-500">Linkedin</a>
+        </div>
+    </div>
+    
+</body>
+</html>
