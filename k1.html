@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="div">this is a html text</h1>
+    <button onclick="changeText()">Change</button>
+
+    <script>
+        // Select the element with id "div"
+        const div = document.querySelector('#div');
+
+        // Function to change text and color of the element
+        function changeText() {
+            div.innerHTML = 'Hello Class';
+            div.style.color = 'blue'; // Change to desired color
+        }
+
+        // Example function to toggle button style (if needed)
+        function toggleButton() {
+            const button = document.getElementById("Click");
+            if (button) {
+                // Example logic: toggle background color between green and default
+                button.style.backgroundColor = 
+                    (button.style.backgroundColor === "green") ? "" : "green";
+            }
+        }
+    </script>
+</body>
+</html>

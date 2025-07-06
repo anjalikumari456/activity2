@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn{
+            border :2px solid black
+        }
+    </style>
+</head>
+<body>
+    <h1 class ="texr-red 500 text-2xl font-bold"> FOR getting the corrtdinates of you location over the button</h1>
+    <button class ="border p-4 m-3 rounded bg-slate-300" onclick=""getlocation>CLICK HERE  </button>
+    <script>
+        let getlocation=document.getElementsById('getlocation')
+        function a(p){
+            console.log("fetch has been done")
+            console.log(p.coords.latitude)
+            console.log(p.coords.longitude)
+
+        }
+        function b(){
+            console.log("fetch get fail")
+        }
+        getlocation.addEventListener('click',async function()){
+            navigator.getlocation.getCurrentPosition(a,b)
+        }
+    </script>
+</body>
+</html>
+
+
+for ech mao for of()
+filter()

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Activity9</title>
+</head>
+<body>
+    <nav class="flex justify-evenly bg-blue-200 w-screen h-[50px]">
+        <button>Home</button>
+        <button>CONTACT US</button>
+        <button>ABOUT US</button>
+        <button id="search_button">SEARCH</button>
+
+    </nav>
+    <div class="m-5 p-5 bg-green-400 w-[97vw] h-[250px] hidden  " id="search_form">
+        <div class="bg-red-800 m-auto p-2  w-[50vw] h-full  ">
+            <div class="flex flex-col justify-evenly items-center h-full " >
+                <input id="url" placeholder="Please Enter your image address here" class="border w-[30vw]
+                 h-[50px] text-center text-white text-xl">
+                 <button class="border w-[150px] h-[40px]" id="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-200 m-5 h-[400px] w-[97vw] flex gap-5">
+        <img class="photo w-full h-full" id="photo_box" src="" alt="Click on search button to search the image">
+        <div class="w-full h-full p-10" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus repellat ipsum rem excepturi consectetur facere nihil consequatur. Repellendus, ullam debitis quaerat ratione totam enim doloremque at perspiciatis, esse vitae vel praesentium ipsum aperiam unde eum sapiente neque. Vitae, est quam.</div>
+    </div>
+
+    <script>
+        let search = document.getElementById("search_button");
+        function hideShow(){
+            let searchForm = document.getElementById("search_form");
+            if(searchForm.classList.contains('hidden')){
+                searchForm.classList.remove('hidden');
+            }
+            else{
+                searchForm.classList.add('hidden');
+            }
+        }
+        search.addEventListener("click",hideShow);
+        let sub = document.getElementById("submit");
+        sub.addEventListener("click",getImage);
+        function getImage(){
+            let img = document.getElementById("photo_box");
+            let link = document.getElementById("url");
+
+            img.src = link.value; 
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-gray-100">
+    
+
+
+    <div class="flex items-center justify-center min-h-screen">
+         <div class="form-container">
+             <h2 class="text-center text-2xl font-bold mb-4">Form Validation</h2>
+             <form id="registrationForm" novalidate>
+                 <div class="form-group mb-3">
+                     <label for="username" class="block mb-1">Username</label>
+                     <input type="text" id="username" name="username" placeholder="Enter your name" class="w-full p-2 border border-gray-300 rounded">
+                     <div id="usernameError" class="error"></div>
+                 </div>
+                 <div class="form-group mb-3">
+                     <label for="email" class="block mb-1">Email</label>
+                     <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full p-2 border border-gray-300 rounded">
+                     <div id="emailError" class="error"></div>
+                 </div>
+                 <div class="form-group mb-3">
+                     <label for="password" class="block mb-1">Password</label>
+                     <input type="password" id="password" name="password" placeholder="Enter your password" class="w-full p-2 border border-gray-300 rounded">
+                     <div id="passwordError" class="error"></div>
+                 </div>
+                 <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700">Submit</button>
+                 <div id="successMessage" class="success-message"></div>
+             </form>
+         </div>
+    </div>
+
+    <script>
+         const registrationForm = document.getElementById('registrationForm');
+         const username = document.getElementById('username');
+         const email = document.getElementById('email');
+         const password = document.getElementById('password');
+
+         const usernameError = document.getElementById('usernameError');
+         const emailError = document.getElementById('emailError');
+         const passwordError = document.getElementById('passwordError');
+         const successMessage = document.getElementById('successMessage');
+
+         registrationForm.addEventListener('submit', function(e) {
+             e.preventDefault();
+             let valid = true;
+             successMessage.textContent = '';
+
+             
+             usernameError.textContent = '';
+             emailError.textContent = '';
+             passwordError.textContent = '';
+
+            
+             if(username.value.trim() === '') {
+                 usernameError.textContent = 'Username is required.';
+                 valid = false;
+             }
+
+            
+             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+             if(email.value.trim() === '') {
+                 emailError.textContent = 'Email is required.';
+                 valid = false;
+             } else if(!emailRegex.test(email.value.trim())) {
+                 emailError.textContent = 'Please enter a valid email address.';
+                 valid = false;
+             }
+
+             
+             const passwordValue = password.value.trim();
+             const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+             if(passwordValue === '') {
+                 passwordError.textContent = 'Password is required.';
+                 valid = false;
+             } else if(!passwordRegex.test(passwordValue)) {
+                 passwordError.textContent = 'Password must be at least 8 characters, include at least one letter and one number.';
+                 valid = false;
+             }
+
+             
+             if(valid) {
+                 successMessage.textContent = 'Form submitted successfully!';
+                 registrationForm.reset();
+             }
+         });
+    </script>
+</body>
+</html>

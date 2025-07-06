@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 11</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+ </head>
+ <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h1 class="text-center text-2xl font-bold mb-4">Dynamic Task Manager</h1>
+        <div class="flex mb-4">
+            <input id="taskInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter your task">
+            <button id="addTaskButton" class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Add Task
+            </button>
+        </div>
+        <ul id="taskList" class="list-disc pl-5">
+        </ul>
+    </div>
+    <script>
+         const taskInput = document.getElementById('taskInput');
+         const addTaskButton = document.getElementById('addTaskButton');
+         const taskList = document.getElementById('taskList');
+         
+         addTaskButton.addEventListener('click', function() {
+             const taskText = taskInput.value.trim();
+             if (taskText !== '') {
+                 const li = document.createElement('li');
+                 li.className = "flex items-center justify-between my-2";
+                 
+                 // Create a span to hold the task text
+                 const span = document.createElement('span');
+                 span.textContent = taskText;
+
+                 // Create container for buttons
+                 const buttonContainer = document.createElement('div');
+
+                 // Create edit button
+                 const editButton = document.createElement('button');
+                 editButton.className = "bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2 edit-btn";
+                 editButton.textContent = "Edit";
+
+                 // Create delete button
+                 const deleteButton = document.createElement('button');
+                 deleteButton.className = "bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded delete-btn";
+                 deleteButton.textContent = "Delete";
+
+                 buttonContainer.appendChild(editButton);
+                 buttonContainer.appendChild(deleteButton);
+                 
+                 li.appendChild(span);
+                 li.appendChild(buttonContainer);
+                 
+                 taskList.appendChild(li);
+                 taskInput.value = '';
+             }
+         });
+         
+         taskList.addEventListener('click', function(e) {
+             if(e.target.classList.contains('delete-btn')) {
+                 e.target.parentElement.parentElement.remove();
+             } else if(e.target.classList.contains('edit-btn')) {
+                 const li = e.target.parentElement.parentElement;
+                 const span = li.querySelector('span');
+
+                 // Create an input field for inline editing
+                 const input = document.createElement('input');
+                 input.type = 'text';
+                 input.value = span.textContent;
+                 input.className = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline";
+
+                 // Replace the span with the input
+                 li.replaceChild(input, span);
+                 input.focus();
+
+                 // Save changes on blur
+                 input.addEventListener('blur', function() {
+                     span.textContent = input.value.trim() === '' ? span.textContent : input.value;
+                     li.replaceChild(span, input);
+                 });
+
+                 // Save changes on Enter key press
+                 input.addEventListener('keydown', function(event) {
+                     if (event.key === "Enter") {
+                         span.textContent = input.value.trim() === '' ? span.textContent : input.value;
+                         li.replaceChild(span, input);
+                     }
+                 });
+             }
+         });
+    </script>
+ </body>
+</html>
